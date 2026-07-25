@@ -1,0 +1,39 @@
+.allergen-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.allergen-container.compact {
+  gap: 2px;
+}
+
+.allergen-badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--health-pink-bg);
+  border: 1px solid var(--health-pink-border);
+  border-radius: var(--radius-full);
+  padding: 4px 8px;
+  gap: 6px;
+  color: var(--health-pink);
+}
+
+.allergen-container.compact .allergen-badge {
+  padding: 4px;
+  border-radius: var(--radius-full);
+  gap: 0;
+}
+
+.allergen-icon {
+  font-size: 1rem;
+}
+
+.allergen-container.compact .allergen-icon {
+  font-size: 0.85rem;
+}
+
+.allergen-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+}

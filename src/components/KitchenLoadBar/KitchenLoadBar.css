@@ -1,0 +1,166 @@
+.kitchen-load-bar {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  transition: border-color var(--transition-normal), background var(--transition-normal);
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.kitchen-load-bar.high {
+  border-color: var(--health-orange-border);
+}
+
+.kitchen-load-bar.full,
+.kitchen-load-bar.overflow {
+  border-color: var(--health-pink-border);
+  background: var(--health-pink-bg);
+}
+
+/* Header */
+.klb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.klb-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.klb-icon {
+  font-size: 1rem;
+}
+
+.klb-count {
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  transition: color var(--transition-normal);
+}
+
+/* Progress bar track */
+.klb-track {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background: var(--bg-primary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.klb-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background 0.3s ease;
+  position: relative;
+  min-width: 0;
+}
+
+.klb-fill-danger {
+  animation: barPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes barPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.klb-fill-glow {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4));
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Segment markers */
+.klb-marker {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-50%);
+}
+
+/* Status row */
+.klb-status-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.klb-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.klb-status-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Warning card */
+.klb-warning-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  animation: slideUp 0.3s ease forwards;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.klb-warning-card.high {
+  background: var(--health-orange-bg);
+  border: 1px solid var(--health-orange-border);
+  color: var(--health-orange);
+}
+
+.klb-warning-card.full,
+.klb-warning-card.overflow {
+  background: var(--health-pink-bg);
+  border: 1px solid var(--health-pink-border);
+  color: var(--health-pink);
+}
+
+.klb-warning-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.klb-warning-text {
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.klb-warning-text strong {
+  font-weight: 700;
+  color: var(--health-pink);
+}

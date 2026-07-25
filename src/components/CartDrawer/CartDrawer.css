@@ -1,0 +1,318 @@
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-overlay);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  animation: fadeIn var(--transition-normal);
+}
+
+.drawer-content {
+  background: var(--bg-primary);
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  height: 85vh;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp var(--transition-normal);
+  border-top: 1px solid var(--glass-border);
+}
+
+.drawer-header {
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.drawer-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.drawer-close {
+  background: var(--bg-elevated);
+  border: none;
+  color: var(--text-primary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.drawer-body {
+  padding: var(--space-md) var(--space-lg);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.cart-tenant-group {
+  margin-bottom: var(--space-lg);
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+}
+
+.cart-tenant-header {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-items-list {
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--glass-border);
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.cart-item-image {
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  background: var(--bg-elevated);
+}
+
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-name {
+  margin: 0 0 4px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.cart-item-price {
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.cart-qty-control {
+  display: flex;
+  align-items: center;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+}
+
+.cart-qty-control button {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cart-qty-control span {
+  width: 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cart-item-delete {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.cart-item-delete:hover {
+  opacity: 1;
+}
+
+.cart-summary {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-top: var(--space-lg);
+  border: 1px solid var(--glass-border);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.summary-row:last-child {
+  margin-bottom: 0;
+}
+
+.summary-row.allergens-warning {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  background: var(--health-pink-bg);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--health-pink-border);
+}
+
+.summary-row.capacity-warning {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  background: var(--health-orange-bg);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--health-orange-border);
+  margin-bottom: 12px;
+}
+
+.capacity-warning-detail {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.summary-row.total {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--glass-border);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.summary-label {
+  color: var(--text-secondary);
+}
+
+.summary-row.total .summary-label {
+  color: var(--text-primary);
+}
+
+.summary-value {
+  font-weight: 600;
+}
+
+.summary-row.total .summary-value {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.drawer-footer {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-surface);
+  border-top: 1px solid var(--glass-border);
+}
+
+.checkout-btn {
+  width: 100%;
+  background: var(--accent-gradient);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 14px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-glow);
+  transition: transform var(--transition-fast);
+}
+
+.checkout-btn:hover {
+  transform: translateY(-2px);
+}
+
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.cart-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.cart-empty-title {
+  font-size: 1.25rem;
+  margin: 0 0 8px 0;
+  color: var(--text-primary);
+}
+
+.cart-empty-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.cart-empty-btn {
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 10px 24px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.cart-empty-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Light Mode Overrides */
+body.light-mode .cart-empty-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}

@@ -1,0 +1,38 @@
+.color-filter-container {
+  display: flex;
+  overflow-x: auto;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.color-filter-container::-webkit-scrollbar {
+  display: none;
+}
+
+.color-filter-chip {
+  white-space: nowrap;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  transition: all var(--transition-normal);
+}
+
+.color-filter-chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.color-filter-chip.active {
+  background: var(--chip-bg);
+  border-color: var(--chip-border);
+  color: var(--chip-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}

@@ -1,0 +1,59 @@
+.kitchen-status {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-full);
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.status-indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 2;
+}
+
+.status-ping {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 1;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  opacity: 0.75;
+}
+
+.status-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.status-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,94 @@
+.tenant-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.tenant-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-lg);
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.tenant-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tenant-icon-container {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.tenant-info {
+  flex: 1;
+}
+
+.tenant-name {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tenant-cuisine {
+  margin: 0 0 8px 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.tenant-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tenant-menu-count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: var(--glass-bg);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.tenant-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.tenant-status-dot.normal { background-color: var(--status-normal); }
+.tenant-status-dot.busy { background-color: var(--status-busy); }
+.tenant-status-dot.very-busy { background-color: var(--status-very-busy); }
+
+/* Light Mode Overrides */
+body.light-mode .tenant-card:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
