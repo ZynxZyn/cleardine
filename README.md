@@ -1,11 +1,11 @@
-# 🍽️ ClearDine — Setup Guide
+# ClearDine — Setup Guide
 
 > **Live Demo:** [https://cleardine.vercel.app](https://cleardine.vercel.app)  
 > **Repository:** [https://github.com/ZynxZyn/cleardine](https://github.com/ZynxZyn/cleardine)
 
 ---
 
-## 📋 Prasyarat Sistem
+## Prasyarat Sistem
 
 Sebelum menjalankan aplikasi, pastikan komputer Anda telah terinstall:
 - **Node.js** (versi `18.0.0` atau lebih baru) — [Unduh di sini](https://nodejs.org/)
@@ -14,7 +14,7 @@ Sebelum menjalankan aplikasi, pastikan komputer Anda telah terinstall:
 
 ---
 
-## ⚙️ Panduan Jalankan Aplikasi di Lokal
+## Panduan Jalankan Aplikasi di Lokal
 
 ### 1. Kloning Repositori
 Buka Terminal / Command Prompt (CMD), lalu jalankan:
@@ -46,7 +46,7 @@ http://localhost:5173
 
 ---
 
-## 🛠️ Perintah Lainnya (Build & Preview)
+## Perintah Lainnya (Build & Preview)
 
 - **Uji Kompilasi Produksi (Build):**
   ```bash
@@ -60,7 +60,7 @@ http://localhost:5173
 
 ---
 
-## 💻 Tech Stack
+## Tech Stack
 - **Framework**: React.js (v18+)
 - **Build Tool**: Vite
 - **Router**: React Router DOM (v6)
