@@ -4,7 +4,15 @@ import './TenantCard.css';
 const TenantCard = ({ tenant, onClick }) => {
   const isBusy = tenant.kitchenStatus === 'busy' || tenant.kitchenStatus === 'very-busy';
   const icon = isBusy ? '🕒' : '⚡';
-  const avgTime = tenant.avgTime || (isBusy ? '15m' : '8m');
+  
+  let timeText = '±0m';
+  if (tenant.kitchenStatus === 'busy') {
+    timeText = '+5-10m';
+  } else if (tenant.kitchenStatus === 'very-busy') {
+    timeText = '+15-20m';
+  } else {
+    timeText = tenant.avgTime || '±0m';
+  }
 
   return (
     <div className="tenant-card" onClick={onClick}>
@@ -17,9 +25,9 @@ const TenantCard = ({ tenant, onClick }) => {
         
         <div className="tenant-meta">
           <span className="tenant-menu-count">{tenant.menuCount} menu</span>
-          <div className={`tenant-speed-pill ${isBusy ? 'busy' : 'normal'}`} title={isBusy ? "Dapur padat (estimasi ~15m)" : "Dapur lancar (estimasi ~8m)"}>
+          <div className={`tenant-speed-pill ${isBusy ? 'busy' : 'normal'}`} title={isBusy ? "Dapur sibuk (penambahan +5-10m)" : "Dapur normal (penyajian sesuai estimasi ±0m)"}>
             <span className="speed-icon">{icon}</span>
-            <span className="speed-time">±{avgTime}</span>
+            <span className="speed-time">{timeText}</span>
           </div>
         </div>
       </div>
