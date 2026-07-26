@@ -161,7 +161,7 @@ const HomePage = () => {
       </div>
 
       <footer className="footer reveal">
-        <p>© 2025 ClearDine — Kitchen Avenue</p>
+        <p>© 2026 ClearDine — Kitchen Avenue</p>
       </footer>
 
       <CartBar onViewCart={() => setIsCartOpen(true)} />
