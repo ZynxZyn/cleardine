@@ -29,8 +29,8 @@ export const restaurants = [
     "icon": "🥗",
     "cuisine": "Healthy & Plant-Based",
     "description": "Hidangan sehat dan plant-based untuk gaya hidup modern",
-    "kitchenStatus": "normal",
-    "avgTime": "±0m",
+    "kitchenStatus": "very-busy",
+    "avgTime": "+15-20m",
     "image": "/images/no-preview.svg",
     "menuCount": 8,
     "maxCapacity": 3

@@ -111,6 +111,12 @@
   color: #f39c12;
 }
 
+.tenant-speed-pill.very-busy {
+  background: rgba(231, 76, 60, 0.15);
+  border-color: rgba(231, 76, 60, 0.3);
+  color: #e74c3c;
+}
+
 /* Light Mode Overrides */
 body.light-mode .tenant-card:hover {
   border-color: rgba(0, 0, 0, 0.15);
@@ -125,4 +131,9 @@ body.light-mode .tenant-speed-pill.normal {
 body.light-mode .tenant-speed-pill.busy {
   background: rgba(243, 156, 18, 0.18);
   color: #d68910;
+}
+
+body.light-mode .tenant-speed-pill.very-busy {
+  background: rgba(231, 76, 60, 0.18);
+  color: #c0392b;
 }
