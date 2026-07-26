@@ -19,7 +19,7 @@ const TenantCard = ({ tenant, onClick }) => {
           <span className="tenant-menu-count">{tenant.menuCount} menu</span>
           <div className={`tenant-speed-pill ${isBusy ? 'busy' : 'normal'}`} title={isBusy ? "Dapur padat (estimasi ~15m)" : "Dapur lancar (estimasi ~8m)"}>
             <span className="speed-icon">{icon}</span>
-            <span className="speed-time">{avgTime}</span>
+            <span className="speed-time">±{avgTime}</span>
           </div>
         </div>
       </div>
