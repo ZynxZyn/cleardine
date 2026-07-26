@@ -6,6 +6,7 @@ export const restaurants = [
     "cuisine": "Masakan Indonesia Tradisional",
     "description": "Cita rasa autentik Nusantara dari berbagai daerah Indonesia",
     "kitchenStatus": "normal",
+    "avgTime": "8m",
     "image": "/images/no-preview.svg",
     "menuCount": 8,
     "maxCapacity": 3
@@ -17,6 +18,7 @@ export const restaurants = [
     "cuisine": "Masakan Jepang Modern",
     "description": "Ramen dan hidangan Jepang autentik dengan sentuhan modern",
     "kitchenStatus": "busy",
+    "avgTime": "15m",
     "image": "/images/no-preview.svg",
     "menuCount": 8,
     "maxCapacity": 3
@@ -28,6 +30,7 @@ export const restaurants = [
     "cuisine": "Healthy & Plant-Based",
     "description": "Hidangan sehat dan plant-based untuk gaya hidup modern",
     "kitchenStatus": "normal",
+    "avgTime": "6m",
     "image": "/images/no-preview.svg",
     "menuCount": 8,
     "maxCapacity": 3

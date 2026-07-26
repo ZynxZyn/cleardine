@@ -73,22 +73,56 @@
   font-size: 0.8rem;
   color: var(--text-muted);
   background: var(--glass-bg);
-  padding: 2px 8px;
+  padding: 3px 9px;
   border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border);
 }
 
-.tenant-status-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+/* Speed Pill Badge replacing plain dot */
+.tenant-speed-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  backdrop-filter: blur(8px);
+  transition: background var(--transition-fast);
 }
 
-.tenant-status-dot.normal { background-color: var(--status-normal); }
-.tenant-status-dot.busy { background-color: var(--status-busy); }
-.tenant-status-dot.very-busy { background-color: var(--status-very-busy); }
+.tenant-speed-pill .speed-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.tenant-speed-pill.normal {
+  background: rgba(46, 204, 113, 0.12);
+  border-color: rgba(46, 204, 113, 0.25);
+  color: #2ecc71;
+}
+
+.tenant-speed-pill.busy {
+  background: rgba(243, 156, 18, 0.12);
+  border-color: rgba(243, 156, 18, 0.25);
+  color: #f39c12;
+}
 
 /* Light Mode Overrides */
 body.light-mode .tenant-card:hover {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .tenant-speed-pill.normal {
+  background: rgba(46, 204, 113, 0.15);
+  color: #1e8449;
+}
+
+body.light-mode .tenant-speed-pill.busy {
+  background: rgba(243, 156, 18, 0.18);
+  color: #d68910;
 }
