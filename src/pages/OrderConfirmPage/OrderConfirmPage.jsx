@@ -4,10 +4,10 @@ import { useCart } from '../../context/CartContext';
 import './OrderConfirmPage.css';
 
 const PAYMENT_LABELS = {
-  ovo:  { name: 'OVO',           icon: '💜' },
-  dana: { name: 'DANA',          icon: '💙' },
-  bank: { name: 'Transfer Bank', icon: '🏦' },
-  cash: { name: 'Tunai (Cash)',  icon: '💵' },
+  ovo:  { name: 'OVO',           icon: null, logoSrc: '/images/logo-ovo.png' },
+  dana: { name: 'DANA',          icon: null, logoSrc: '/images/logo-dana.png' },
+  bank: { name: 'Transfer Bank', icon: '🏦', logoSrc: null },
+  cash: { name: 'Tunai (Cash)',  icon: '💵', logoSrc: null },
 };
 
 const OrderConfirmPage = () => {
@@ -123,7 +123,14 @@ const OrderConfirmPage = () => {
 
         <div className="order-payment-row">
           <span>Metode Bayar</span>
-          <strong>{paymentInfo.icon} {paymentInfo.name}</strong>
+          <strong className="order-payment-val">
+            {paymentInfo.logoSrc ? (
+              <img src={paymentInfo.logoSrc} alt={paymentInfo.name} className="order-payment-logo" />
+            ) : (
+              <span className="order-payment-icon">{paymentInfo.icon}</span>
+            )}
+            <span>{paymentInfo.name}</span>
+          </strong>
         </div>
         <div className="order-total-row">
           <span>Total Dibayar</span>

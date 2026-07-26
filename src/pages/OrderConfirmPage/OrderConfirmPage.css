@@ -385,3 +385,15 @@
   font-weight: 700;
   color: var(--text-primary);
 }
+
+.order-payment-val {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.order-payment-logo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
