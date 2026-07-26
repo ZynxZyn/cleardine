@@ -96,9 +96,9 @@ const PaymentModal = ({ isOpen, onClose, onConfirm, totalAmount }) => {
               } : {}}
               onClick={() => setSelected(method.id)}
             >
-              <div className="pm-icon-wrap" style={{ background: method.bgColor, border: `1px solid ${method.borderColor}` }}>
+              <div className="pm-icon-wrap" style={method.logoSrc ? { background: 'transparent', border: 'none' } : { background: method.bgColor, border: `1px solid ${method.borderColor}` }}>
                 {method.logoSrc ? (
-                  <img src={method.logoSrc} alt={method.name} className="pm-logo-img" />
+                  <img src={method.logoSrc} alt={method.name} className="pm-logo-img-circle" />
                 ) : (
                   <span className="pm-icon">{method.icon}</span>
                 )}
@@ -130,9 +130,9 @@ const PaymentModal = ({ isOpen, onClose, onConfirm, totalAmount }) => {
               } : {}}
               onClick={() => setSelected(method.id)}
             >
-              <div className="pm-icon-wrap" style={{ background: method.bgColor, border: `1px solid ${method.borderColor}` }}>
+              <div className="pm-icon-wrap" style={method.logoSrc ? { background: 'transparent', border: 'none' } : { background: method.bgColor, border: `1px solid ${method.borderColor}` }}>
                 {method.logoSrc ? (
-                  <img src={method.logoSrc} alt={method.name} className="pm-logo-img" />
+                  <img src={method.logoSrc} alt={method.name} className="pm-logo-img-circle" />
                 ) : (
                   <span className="pm-icon">{method.icon}</span>
                 )}
