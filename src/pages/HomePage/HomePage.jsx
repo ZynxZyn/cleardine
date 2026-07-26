@@ -47,9 +47,9 @@ const HomePage = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleCheckout = () => {
+  const handleCheckout = (paymentMethod) => {
     setIsCartOpen(false);
-    navigate(`/order-confirm?table=${tableNo}`);
+    navigate(`/order-confirm?table=${tableNo}`, { state: { paymentMethod } });
   };
 
   const handleTenantClick = (restId) => {

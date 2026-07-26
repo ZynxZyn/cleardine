@@ -106,9 +106,9 @@ const MenuPage = () => {
     setIsDetailOpen(true);
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = (paymentMethod) => {
     setIsCartOpen(false);
-    navigate(`/order-confirm${tableParam ? `?table=${encodeURIComponent(tableParam)}` : ''}`);
+    navigate(`/order-confirm${tableParam ? `?table=${encodeURIComponent(tableParam)}` : ''}`, { state: { paymentMethod } });
   };
 
   if (loading) {

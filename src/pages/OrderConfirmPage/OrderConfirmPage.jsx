@@ -1,11 +1,21 @@
 import React, { useEffect, useRef } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import './OrderConfirmPage.css';
+
+const PAYMENT_LABELS = {
+  ovo:  { name: 'OVO',           icon: '💜' },
+  dana: { name: 'DANA',          icon: '💙' },
+  bank: { name: 'Transfer Bank', icon: '🏦' },
+  cash: { name: 'Tunai (Cash)',  icon: '💵' },
+};
 
 const OrderConfirmPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const location = useLocation();
+  const paymentMethod = location.state?.paymentMethod || 'cash';
+  const paymentInfo = PAYMENT_LABELS[paymentMethod] || PAYMENT_LABELS.cash;
   const { cart, cartTotal, cartEstTime, clearCart } = useCart();
   
   const orderNumberRef = useRef('');
@@ -111,6 +121,10 @@ const OrderConfirmPage = () => {
           ))}
         </div>
 
+        <div className="order-payment-row">
+          <span>Metode Bayar</span>
+          <strong>{paymentInfo.icon} {paymentInfo.name}</strong>
+        </div>
         <div className="order-total-row">
           <span>Total Dibayar</span>
           <strong>Rp {snapshotTotal.toLocaleString('id-ID')}</strong>

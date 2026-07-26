@@ -369,3 +369,19 @@
 .c-17 { left: 95%; background: #3498db; animation: fall 2.4s ease-in 1.2s forwards; }
 .c-18 { left: 5%; background: #f39c12; animation: fall 3.3s ease-in 1.6s forwards; }
 .c-19 { left: 50%; background: #2ecc71; animation: fall 2.7s ease-in 1.8s forwards; }
+
+.order-payment-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid var(--glass-border);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.order-payment-row strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
