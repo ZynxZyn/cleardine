@@ -6,7 +6,8 @@ const PAYMENT_METHODS = [
     id: 'ovo',
     name: 'OVO',
     type: 'e-wallet',
-    icon: '💜',
+    icon: null,
+    logoSrc: '/images/logo-ovo.png',
     color: '#7c3aed',
     bgColor: 'rgba(124, 58, 237, 0.12)',
     borderColor: 'rgba(124, 58, 237, 0.35)',
@@ -17,7 +18,8 @@ const PAYMENT_METHODS = [
     id: 'dana',
     name: 'DANA',
     type: 'e-wallet',
-    icon: '💙',
+    icon: null,
+    logoSrc: '/images/logo-dana.png',
     color: '#2563eb',
     bgColor: 'rgba(37, 99, 235, 0.12)',
     borderColor: 'rgba(37, 99, 235, 0.35)',
@@ -29,6 +31,7 @@ const PAYMENT_METHODS = [
     name: 'Transfer Bank',
     type: 'bank',
     icon: '🏦',
+    logoSrc: null,
     color: '#0891b2',
     bgColor: 'rgba(8, 145, 178, 0.12)',
     borderColor: 'rgba(8, 145, 178, 0.35)',
@@ -40,6 +43,7 @@ const PAYMENT_METHODS = [
     name: 'Tunai (Cash)',
     type: 'cash',
     icon: '💵',
+    logoSrc: null,
     color: '#16a34a',
     bgColor: 'rgba(22, 163, 74, 0.12)',
     borderColor: 'rgba(22, 163, 74, 0.35)',
@@ -93,7 +97,11 @@ const PaymentModal = ({ isOpen, onClose, onConfirm, totalAmount }) => {
               onClick={() => setSelected(method.id)}
             >
               <div className="pm-icon-wrap" style={{ background: method.bgColor, border: `1px solid ${method.borderColor}` }}>
-                <span className="pm-icon">{method.icon}</span>
+                {method.logoSrc ? (
+                  <img src={method.logoSrc} alt={method.name} className="pm-logo-img" />
+                ) : (
+                  <span className="pm-icon">{method.icon}</span>
+                )}
               </div>
               <div className="pm-info">
                 <span className="pm-name">{method.name}</span>
@@ -123,7 +131,11 @@ const PaymentModal = ({ isOpen, onClose, onConfirm, totalAmount }) => {
               onClick={() => setSelected(method.id)}
             >
               <div className="pm-icon-wrap" style={{ background: method.bgColor, border: `1px solid ${method.borderColor}` }}>
-                <span className="pm-icon">{method.icon}</span>
+                {method.logoSrc ? (
+                  <img src={method.logoSrc} alt={method.name} className="pm-logo-img" />
+                ) : (
+                  <span className="pm-icon">{method.icon}</span>
+                )}
               </div>
               <div className="pm-info">
                 <span className="pm-name">{method.name}</span>

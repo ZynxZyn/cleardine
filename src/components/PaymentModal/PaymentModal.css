@@ -162,6 +162,13 @@
   line-height: 1;
 }
 
+.pm-logo-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
 /* Method Info */
 .pm-info {
   flex: 1;
