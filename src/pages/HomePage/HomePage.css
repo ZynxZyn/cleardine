@@ -62,10 +62,23 @@
   font-size: 2.5rem;
   font-weight: 800;
   margin: 0 0 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-logo span {
   background: linear-gradient(to right, #fff, #a0a0b8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.hero-logo-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
 }
 
 .hero-subtitle {
@@ -273,11 +286,12 @@
 }
 
 /* Light Mode Overrides */
-body.light-mode .hero-logo {
+body.light-mode .hero-logo span {
   background: none;
   -webkit-background-clip: unset;
   -webkit-text-fill-color: var(--text-primary);
   background-clip: unset;
+  color: var(--text-primary);
 }
 
 body.light-mode .back-to-landing-btn:hover {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ThemeToggle from '../../components/ThemeToggle/ThemeToggle';
 import './LandingPage.css';
@@ -7,6 +7,15 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const [showTableModal, setShowTableModal] = useState(false);
   const [tableInput, setTableInput] = useState('');
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    const handleThemeChange = () => {
+      setTheme(localStorage.getItem('theme') || 'dark');
+    };
+    window.addEventListener('theme-change', handleThemeChange);
+    return () => window.removeEventListener('theme-change', handleThemeChange);
+  }, []);
 
   const handleOrderNow = () => {
     setShowTableModal(true);
@@ -38,7 +47,11 @@ const LandingPage = () => {
         <div className="lp-hero-content">
           <div className="lp-badge">Kitchen Avenue</div>
           <h1 className="lp-title">
-            <span className="lp-logo-icon">🍽️</span>
+            <img 
+              src={theme === 'light' ? '/images/logo-light.png' : '/images/logo-dark.png'} 
+              alt="ClearDine Logo" 
+              className="lp-logo-img" 
+            />
             ClearDine
           </h1>
           <p className="lp-tagline">Menu Transparan, Pesanan Nyaman.</p>

@@ -15,6 +15,7 @@ const ThemeToggle = () => {
       document.body.classList.remove('light-mode');
       localStorage.setItem('theme', 'dark');
     }
+    window.dispatchEvent(new Event('theme-change'));
   }, [isLightMode]);
 
   const handleToggle = () => {

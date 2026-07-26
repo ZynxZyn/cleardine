@@ -13,8 +13,17 @@ const HomePage = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
   
   const tableNo = searchParams.get('table') || 'Dine In';
+
+  useEffect(() => {
+    const handleThemeChange = () => {
+      setTheme(localStorage.getItem('theme') || 'dark');
+    };
+    window.addEventListener('theme-change', handleThemeChange);
+    return () => window.removeEventListener('theme-change', handleThemeChange);
+  }, []);
 
   useEffect(() => {
     const loadRestaurants = async () => {
@@ -69,7 +78,14 @@ const HomePage = () => {
       <div className="hero-section">
         <div className="hero-bg"></div>
         <div className="hero-content reveal reveal-active">
-          <h1 className="hero-logo">🍽️ ClearDine</h1>
+          <h1 className="hero-logo">
+            <img 
+              src={theme === 'light' ? '/images/logo-light.png' : '/images/logo-dark.png'} 
+              alt="ClearDine Logo" 
+              className="hero-logo-img" 
+            />
+            <span>ClearDine</span>
+          </h1>
           <div className="hero-subtitle">
             <span className="line"></span>
             <span>Kitchen Avenue</span>

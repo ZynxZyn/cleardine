@@ -117,10 +117,12 @@
   animation: slideUp 0.6s ease 0.3s both;
 }
 
-.lp-logo-icon {
+.lp-logo-img {
   display: block;
-  font-size: 3.2rem;
-  margin-bottom: 8px;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  margin: 0 auto 12px;
 }
 
 .lp-tagline {
