@@ -3,7 +3,7 @@ import AllergenBadge from '../AllergenBadge/AllergenBadge';
 import { useCart } from '../../context/CartContext';
 import './DetailModal.css';
 
-const DetailModal = ({ item, isOpen, onClose, restaurantName, restaurantIcon }) => {
+const DetailModal = ({ item, isOpen, onClose, restaurantName, restaurantIcon, kitchenStatus }) => {
   const { getItemQuantity, updateQuantity, addToCart } = useCart();
   const [localQty, setLocalQty] = useState(1);
   const [imageError, setImageError] = useState(false);
@@ -92,7 +92,9 @@ const DetailModal = ({ item, isOpen, onClose, restaurantName, restaurantIcon }) 
             <div className="modal-info-box">
               <span className="info-box-label">WAKTU</span>
               <div className="info-box-value">
-                {item.prepSpeed === 'fast' ? '⚡' : '🕐'} {item.prepTime} menit
+                {item.prepSpeed === 'fast' ? '⚡' : '🕐'} {item.prepTime}m {
+                  kitchenStatus === 'very-busy' ? '(+15-20m)' : kitchenStatus === 'busy' ? '(+5-10m)' : '(±0m)'
+                }
               </div>
             </div>
             

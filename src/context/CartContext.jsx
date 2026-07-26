@@ -44,11 +44,13 @@ export const CartProvider = ({ children }) => {
       if (!timeDetailsByRestaurant[rId]) {
         const rest = restaurants.find(r => r.id === rId);
         const maxCapacity = rest ? rest.maxCapacity : 3;
+        const kitchenStatus = rest ? rest.kitchenStatus : 'normal';
         const name = item.restaurantName || (rest ? rest.name : `Tenant #${rId}`);
         
         timeDetailsByRestaurant[rId] = {
           name,
           maxCapacity,
+          kitchenStatus,
           maxPrepTime: 0,
           totalQty: 0,
         };
@@ -67,18 +69,32 @@ export const CartProvider = ({ children }) => {
     Object.values(timeDetailsByRestaurant).forEach(res => {
       // Jumlah putaran/giliran kompor yang dibutuhkan
       const rounds = Math.ceil(res.totalQty / res.maxCapacity);
-      const tenantTime = rounds * res.maxPrepTime;
       
-      if (rounds > 1) {
-        // Melebihi kapasitas slot masak sekaligus
-        const extraWaitTime = (rounds - 1) * res.maxPrepTime;
+      // Delay tambahan dari status dapur
+      let statusDelay = 0;
+      let statusLabel = '±0m (Normal)';
+      if (res.kitchenStatus === 'busy') {
+        statusDelay = 8; // Dapur Sibuk (+5-10m)
+        statusLabel = '+5-10m (Dapur Sibuk)';
+      } else if (res.kitchenStatus === 'very-busy') {
+        statusDelay = 18; // Dapur Sangat Sibuk (+15-20m)
+        statusLabel = '+15-20m (Dapur Sangat Sibuk)';
+      }
+
+      const baseRoundsTime = rounds * res.maxPrepTime;
+      const tenantTime = baseRoundsTime + statusDelay;
+      
+      if (rounds > 1 || statusDelay > 0) {
         capacityWarnings.push({
           tenantName: res.name,
           totalQty: res.totalQty,
           maxCapacity: res.maxCapacity,
           rounds,
-          extraWaitTime,
-          baseTime: res.maxPrepTime
+          baseTime: res.maxPrepTime,
+          kitchenStatus: res.kitchenStatus,
+          statusLabel,
+          statusDelay,
+          tenantTotalTime: tenantTime
         });
       }
       

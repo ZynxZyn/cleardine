@@ -92,10 +92,18 @@ const CartDrawer = ({ isOpen, onClose, onCheckout }) => {
                 
                 {cartCapacityWarnings && cartCapacityWarnings.length > 0 && (
                   <div className="summary-row capacity-warning">
-                    <span className="summary-label">⏱️ Antrean Slot Porsi Dapur</span>
+                    <span className="summary-label">⏱️ Catatan Waktu Dapur</span>
                     {cartCapacityWarnings.map((warn, i) => (
                       <div key={i} className="capacity-warning-detail">
-                        Pesanan <strong>{warn.tenantName}</strong> ({warn.totalQty}/{warn.maxCapacity} porsi) melebihi slot kompor sekaligus. Porsi ke-{warn.maxCapacity + 1} dst. harus menunggu porsi sebelumnya selesai (+{warn.extraWaitTime} menit). Total waktu: {warn.rounds * warn.baseTime} m.
+                        <strong>{warn.tenantName}</strong>: {
+                          warn.kitchenStatus === 'very-busy' 
+                            ? '🔴 Dapur Sangat Sibuk (+15-20m)' 
+                            : warn.kitchenStatus === 'busy' 
+                            ? '🟠 Dapur Sibuk (+5-10m)' 
+                            : '🟢 Dapur Normal (±0m)'
+                        }
+                        {warn.rounds > 1 && ` • Antrean porsi (${warn.totalQty}/${warn.maxCapacity} per slot)`}
+                        . Est: ~{warn.tenantTotalTime} menit.
                       </div>
                     ))}
                   </div>

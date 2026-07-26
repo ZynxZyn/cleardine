@@ -213,6 +213,7 @@ const MenuPage = () => {
         onClose={() => setIsDetailOpen(false)}
         restaurantName={restaurant.name}
         restaurantIcon={restaurant.icon}
+        kitchenStatus={restaurant.kitchenStatus}
       />
       
       <CartBar onViewCart={() => setIsCartOpen(true)} />
