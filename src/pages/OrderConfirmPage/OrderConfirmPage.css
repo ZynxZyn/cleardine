@@ -397,4 +397,5 @@
   height: 22px;
   object-fit: cover;
   border-radius: 50%;
+  transform: scale(1.22);
 }
