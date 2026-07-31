@@ -152,10 +152,12 @@ const MenuPage = () => {
       />
       
       <div className="menu-content-wrap">
-        <div className="menu-sticky-tools">
+        <div className="menu-top-info">
           <KitchenStatus status={restaurant.kitchenStatus} />
           <KitchenLoadBar restaurant={restaurant} />
-          
+        </div>
+        
+        <div className="menu-sticky-tools">
           <SearchBar 
             value={searchQuery} 
             onChange={setSearchQuery} 
@@ -166,11 +168,23 @@ const MenuPage = () => {
             activeFilter={activeColorFilter} 
             onFilterChange={setActiveColorFilter} 
           />
+
+          <div className="category-tabs-sticky">
+            {categories.map(cat => (
+              <button 
+                key={cat}
+                className={`category-tab ${activeCategory === cat ? 'active' : ''}`}
+                onClick={() => setActiveCategory(cat)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
         
         <div className="menu-results-header">
           <span className="results-count">
-            {filteredMenus.length} menu{filteredMenus.length !== 1 ? '' : ''} ditemukan
+            {filteredMenus.length} menu ditemukan
           </span>
           {(searchQuery || activeColorFilter !== 'all' || activeCategory !== 'Semua') && (
             <button className="reset-filter-inline" onClick={() => {
@@ -181,17 +195,6 @@ const MenuPage = () => {
               Reset filter
             </button>
           )}
-        </div>
-        <div className="category-tabs">
-          {categories.map(cat => (
-            <button 
-              key={cat}
-              className={`category-tab ${activeCategory === cat ? 'active' : ''}`}
-              onClick={() => setActiveCategory(cat)}
-            >
-              {cat}
-            </button>
-          ))}
         </div>
         
         {filteredMenus.length > 0 ? (
