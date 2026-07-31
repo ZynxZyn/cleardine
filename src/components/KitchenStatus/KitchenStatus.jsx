@@ -12,7 +12,7 @@ const KitchenStatus = ({ status }) => {
         <span className="status-ping"></span>
       </div>
       <div className="status-text">
-        <span className="status-label">{queue.statusLabel}</span>
+        <span className="status-label">{queue.statusLabel} · {queue.timeLabel}</span>
         <span className="status-desc">{queue.desc}</span>
       </div>
     </div>

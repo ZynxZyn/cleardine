@@ -1,12 +1,13 @@
 .kitchen-status {
   display: flex;
+  justify-content: center;
   align-items: center;
-  background: var(--bg-surface);
+  background: var(--bg-elevated);
   border: 1px solid var(--glass-border);
-  padding: 10px 18px;
+  padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-full);
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: var(--space-md);
+  margin: 0 auto var(--space-md);
   width: fit-content;
   max-width: 100%;
 }
@@ -16,8 +17,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   flex-shrink: 0;
 }
 
@@ -42,35 +43,36 @@
 .status-text {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
   min-width: 0;
 }
 
 .status-label {
   font-weight: 700;
-  font-size: 0.925rem;
-  line-height: 1.25;
+  font-size: 0.875rem;
 }
 
 .status-desc {
-  font-size: 0.775rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
-  margin-top: 1px;
-  line-height: 1.25;
+  margin-top: 2px;
 }
 
 .kitchen-status.normal .status-dot,
-.kitchen-status.normal .status-ping { background: var(--health-green); }
-.kitchen-status.normal .status-label { color: var(--health-green); }
+.kitchen-status.normal .status-ping { background: #2ecc71; }
+.kitchen-status.normal .status-label { color: #27ae60; }
+body.dark-mode .kitchen-status.normal .status-label { color: #2ecc71; }
 
 .kitchen-status.busy .status-dot,
-.kitchen-status.busy .status-ping { background: var(--health-orange); }
-.kitchen-status.busy .status-label { color: var(--health-orange); }
+.kitchen-status.busy .status-ping { background: #f39c12; }
+.kitchen-status.busy .status-label { color: #e67e22; }
+body.dark-mode .kitchen-status.busy .status-label { color: #f39c12; }
 
 .kitchen-status.very-busy .status-dot,
-.kitchen-status.very-busy .status-ping { background: var(--health-pink); }
-.kitchen-status.very-busy .status-label { color: var(--health-pink); }
+.kitchen-status.very-busy .status-ping { background: #e74c3c; }
+.kitchen-status.very-busy .status-label { color: #c0392b; }
+body.dark-mode .kitchen-status.very-busy .status-label { color: #e74c3c; }
 
 @keyframes ping {
   75%, 100% {
