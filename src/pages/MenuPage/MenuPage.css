@@ -12,16 +12,13 @@
 }
 
 .menu-sticky-tools {
-  position: sticky;
-  top: 60px;
-  z-index: 80;
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  position: relative;
+  top: auto;
+  z-index: 1;
+  background: transparent;
   margin: 0 calc(-1 * var(--space-lg));
   padding: 10px var(--space-lg) 6px;
   border-bottom: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);
 }
 
