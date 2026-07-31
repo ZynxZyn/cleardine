@@ -157,19 +157,22 @@ const MenuPage = () => {
           <KitchenLoadBar restaurant={restaurant} />
         </div>
         
-        <div className="menu-sticky-tools">
+        {/* Sticky Search Bar Saja */}
+        <div className="menu-search-sticky">
           <SearchBar 
             value={searchQuery} 
             onChange={setSearchQuery} 
             placeholder="Cari menu, cth: 'Nasi' atau 'tanpa kacang'" 
           />
-          
+        </div>
+        
+        <div className="menu-flow-filters">
           <ColorFilter 
             activeFilter={activeColorFilter} 
             onFilterChange={setActiveColorFilter} 
           />
 
-          <div className="category-tabs-sticky">
+          <div className="category-tabs">
             {categories.map(cat => (
               <button 
                 key={cat}

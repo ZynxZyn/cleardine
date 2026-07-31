@@ -11,15 +11,23 @@
   margin-bottom: 12px;
 }
 
-.menu-sticky-tools {
-  position: relative;
-  top: auto;
-  z-index: 1;
-  background: transparent;
-  margin: 0 calc(-1 * var(--space-lg));
-  padding: 10px var(--space-lg) 6px;
+/* HANYA SearchBar yang Sticky */
+.menu-search-sticky {
+  position: sticky;
+  top: 60px;
+  z-index: 80;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  margin: 0 calc(-1 * var(--space-lg)) 12px;
+  padding: 10px var(--space-lg) 10px;
   border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);
+}
+
+.menu-flow-filters {
+  margin-bottom: 12px;
 }
 
 .menu-results-header {
@@ -48,16 +56,17 @@
   text-underline-offset: 2px;
 }
 
-.category-tabs-sticky {
+.category-tabs {
   display: flex;
   overflow-x: auto;
   gap: var(--space-sm);
-  margin-top: 10px;
-  padding-bottom: 4px;
+  margin-top: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--glass-border);
   scrollbar-width: none;
 }
 
-.category-tabs-sticky::-webkit-scrollbar {
+.category-tabs::-webkit-scrollbar {
   display: none;
 }
 
