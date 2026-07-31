@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AllergenBadge from '../AllergenBadge/AllergenBadge';
 import { useCart } from '../../context/CartContext';
+import Icon from '../Icon/Icon';
 import './MenuCard.css';
 
 const MenuCard = ({ item, onViewDetail, restaurantName, restaurantIcon }) => {
@@ -35,13 +36,13 @@ const MenuCard = ({ item, onViewDetail, restaurantName, restaurantIcon }) => {
           />
         ) : (
           <div className="menu-image-fallback">
-            <span>Belum Ada Gambar</span>
+            <Icon name="utensils" size={32} color="var(--text-muted)" />
           </div>
         )}
         
         <div className="menu-badges-top">
-          {item.isPopular && <span className="menu-badge popular">🔥 Populer</span>}
-          {item.isNew && <span className="menu-badge new">✨ Baru</span>}
+          {item.isPopular && <span className="menu-badge popular">Populer</span>}
+          {item.isNew && <span className="menu-badge new">Baru</span>}
         </div>
       </div>
       
@@ -51,7 +52,7 @@ const MenuCard = ({ item, onViewDetail, restaurantName, restaurantIcon }) => {
         <div className="menu-meta">
           <span className="menu-weight">{item.weight}</span>
           <span className="menu-time">
-            {item.prepSpeed === 'fast' ? '⚡' : '🕐'} {item.prepTime}m
+            {item.prepTime}m
           </span>
         </div>
         

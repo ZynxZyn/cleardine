@@ -75,10 +75,10 @@ export const CartProvider = ({ children }) => {
       let statusLabel = '±0m (Normal)';
       if (res.kitchenStatus === 'busy') {
         statusDelay = 8; // Dapur Sibuk (+5-10m)
-        statusLabel = '+5-10m (Dapur Sibuk)';
+        statusLabel = '±10m (Dapur Sibuk)';
       } else if (res.kitchenStatus === 'very-busy') {
         statusDelay = 18; // Dapur Sangat Sibuk (+15-20m)
-        statusLabel = '+15-20m (Dapur Sangat Sibuk)';
+        statusLabel = '±20m (Dapur Sangat Sibuk)';
       }
 
       const baseRoundsTime = rounds * res.maxPrepTime;

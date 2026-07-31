@@ -1,23 +1,16 @@
 import React from 'react';
+import { getKitchenQueue } from '../../utils/kitchenStatus';
+import Icon from '../Icon/Icon';
 import './TenantCard.css';
 
 const TenantCard = ({ tenant, onClick }) => {
-  const isBusy = tenant.kitchenStatus === 'busy' || tenant.kitchenStatus === 'very-busy';
-  const icon = isBusy ? '🕒' : '⚡';
-  
-  let timeText = '±0m';
-  if (tenant.kitchenStatus === 'very-busy') {
-    timeText = '+15-20m';
-  } else if (tenant.kitchenStatus === 'busy') {
-    timeText = '+5-10m';
-  } else {
-    timeText = tenant.avgTime || '±0m';
-  }
+  const status = tenant.kitchenStatus || 'normal';
+  const queue = getKitchenQueue(status);
 
   return (
     <div className="tenant-card" onClick={onClick}>
       <div className="tenant-icon-container">
-        <span className="tenant-icon">{tenant.icon || '🍽️'}</span>
+        <span className="tenant-icon">{tenant.icon ? tenant.icon : tenant.name?.charAt(0) || ''}</span>
       </div>
       <div className="tenant-info">
         <h3 className="tenant-name">{tenant.name}</h3>
@@ -26,20 +19,21 @@ const TenantCard = ({ tenant, onClick }) => {
         <div className="tenant-meta">
           <span className="tenant-menu-count">{tenant.menuCount} menu</span>
           <div 
-            className={`tenant-speed-pill ${tenant.kitchenStatus || 'normal'}`} 
-            title={
-              tenant.kitchenStatus === 'very-busy' 
-                ? "Dapur sangat sibuk (penambahan +15-20m)" 
-                : tenant.kitchenStatus === 'busy' 
-                ? "Dapur sibuk (penambahan +5-10m)" 
-                : "Dapur normal (penyajian sesuai estimasi ±0m)"
-            }
+            className={`tenant-speed-pill ${queue.className}`}
+            title={queue.desc}
           >
-            <span className="speed-icon">{icon}</span>
-            <span className="speed-time">{timeText}</span>
+            <span className="speed-dot-indicator"></span>
+            <span className="speed-text">
+              <span className="speed-status">{queue.statusLabel}</span>
+              <span className="speed-sep">·</span>
+              <span className="speed-time">{queue.timeLabel}</span>
+            </span>
           </div>
         </div>
       </div>
+      <span className="tenant-chevron" aria-hidden="true">
+        <Icon name="chevronRight" size={18} color="var(--text-muted)" />
+      </span>
     </div>
   );
 };

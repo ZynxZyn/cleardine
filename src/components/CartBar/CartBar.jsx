@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCart } from '../../context/CartContext';
+import Icon from '../Icon/Icon';
 import './CartBar.css';
 
 const CartBar = ({ onViewCart }) => {
@@ -12,7 +13,9 @@ const CartBar = ({ onViewCart }) => {
       <div className="cart-bar" onClick={onViewCart}>
         <div className="cart-info">
           <div className="cart-icon-container">
-            🛒
+            <span className="cart-icon">
+              <Icon name="cart" size={22} color="white" />
+            </span>
             <span className="cart-badge">{cartCount}</span>
           </div>
           <div className="cart-total">

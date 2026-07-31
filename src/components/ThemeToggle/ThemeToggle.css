@@ -1,9 +1,9 @@
 .theme-toggle-btn {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
+  background: var(--bg-secondary);
   border: 1px solid var(--glass-border);
-  width: 40px;
-  height: 40px;
+  color: var(--text-primary);
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -12,16 +12,15 @@
   overflow: hidden;
   position: relative;
   box-shadow: var(--shadow-sm);
-  transition: border-color var(--transition-fast), 
-              transform var(--transition-fast), 
-              background var(--transition-fast);
+  transition: all var(--transition-fast);
   padding: 0;
+  flex-shrink: 0;
 }
 
 .theme-toggle-btn:hover {
   border-color: var(--accent);
   transform: scale(1.08);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-surface);
 }
 
 .theme-toggle-btn:active {
@@ -30,47 +29,20 @@
 
 /* Icon base */
 .theme-icon {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  will-change: transform, opacity;
 }
 
-/* Spin out: icon shrinks, rotates, fades */
-.theme-icon.spin-out {
-  animation: spinOut 0.2s ease-in forwards;
+body.dark-mode .theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Spin in: icon grows, rotates back, appears */
-.theme-icon.spin-in {
-  animation: spinIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+body.dark-mode .theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: var(--accent);
 }
 
-@keyframes spinOut {
-  0% {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(90deg) scale(0.3);
-  }
-}
-
-@keyframes spinIn {
-  0% {
-    opacity: 0;
-    transform: rotate(-90deg) scale(0.3);
-  }
-  100% {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-}
-
-/* Light Mode Overrides */
-body.light-mode .theme-toggle-btn:hover {
-  background: rgba(0, 0, 0, 0.08);
-}

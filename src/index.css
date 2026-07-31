@@ -1,6 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Nunito:wght@600;700;800&display=swap');
 
 :root {
+  /* Typography — senior-friendly minimums */
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Nunito', 'Inter', sans-serif;
+  --text-base: 16px;
+  --text-sm: 0.875rem;
+  --text-lg: 1.125rem;
+  --touch-min: 44px;
+
+  /* Background — warm light default (pastel-friendly for lansia) */
+  --bg-primary: #f8f6f3;
+  --bg-secondary: #ffffff;
+  --bg-surface: #f0ede8;
+  --bg-elevated: #e8e4de;
+  --bg-overlay: rgba(0, 0, 0, 0.45);
+  
+  /* Text */
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-muted: #78716c;
+  
+  /* Accent — warm coral (appetizing, not harsh) */
+  --accent: #c2410c;
+  --accent-hover: #9a3412;
+  --accent-glow: rgba(194, 65, 12, 0.15);
+  --accent-gradient: linear-gradient(135deg, #ea580c, #c2410c);
+  
+  /* Health Categories — Pastel (Inklusif & Senior-Friendly) */
+  --health-green: #4caf50;
+  --health-green-bg: rgba(76, 175, 80, 0.14);
+  --health-green-border: rgba(76, 175, 80, 0.35);
+  
+  --health-orange: #e65100;
+  --health-orange-bg: rgba(230, 81, 0, 0.12);
+  --health-orange-border: rgba(230, 81, 0, 0.30);
+  
+  --health-blue: #1565c0;
+  --health-blue-bg: rgba(21, 101, 192, 0.12);
+  --health-blue-border: rgba(21, 101, 192, 0.30);
+  
+  --health-pink: #c62828;
+  --health-pink-bg: rgba(198, 40, 40, 0.12);
+  --health-pink-border: rgba(198, 40, 40, 0.30);
+  
+  /* Kitchen queue — neutral (bukan warna gizi) */
+  --queue-bg: rgba(87, 83, 78, 0.08);
+  --queue-border: rgba(87, 83, 78, 0.18);
+  --queue-text: #44403c;
+  
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(28, 25, 23, 0.06);
+  --shadow-md: 0 4px 16px rgba(28, 25, 23, 0.08);
+  --shadow-lg: 0 8px 32px rgba(28, 25, 23, 0.12);
+  --shadow-glow: 0 0 20px var(--accent-glow);
+  
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(28, 25, 23, 0.08);
+  --glass-blur: blur(12px);
+  
+  /* Hover */
+  --hover-bg: rgba(28, 25, 23, 0.05);
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+body.dark-mode {
   /* Background */
   --bg-primary: #0f0f1a;
   --bg-secondary: #1a1a2e;
@@ -19,7 +103,7 @@
   --accent-glow: rgba(233, 69, 96, 0.3);
   --accent-gradient: linear-gradient(135deg, #e94560, #c23152);
   
-  /* Health Categories — Pastel (Inklusif & Senior-Friendly) */
+  /* Health Categories — Pastel (Dark Mode) */
   --health-green: #81c784;
   --health-green-bg: rgba(129, 199, 132, 0.18);
   --health-green-border: rgba(129, 199, 132, 0.45);
@@ -35,94 +119,27 @@
   --health-pink: #e57373;
   --health-pink-bg: rgba(229, 115, 115, 0.18);
   --health-pink-border: rgba(229, 115, 115, 0.45);
-  
-  /* Kitchen Status */
-  --status-normal: #81c784;
-  --status-busy: #ffb74d;
-  --status-very-busy: #e57373;
-  
-  /* Spacing */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
-  --space-2xl: 48px;
-  
-  /* Border Radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
+
+  --queue-bg: rgba(255, 255, 255, 0.06);
+  --queue-border: rgba(255, 255, 255, 0.12);
+  --queue-text: #d6d6e0;
   
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px var(--accent-glow);
   
   /* Glass */
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-blur: blur(12px);
   
   /* Hover */
   --hover-bg: rgba(255, 255, 255, 0.1);
-  
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
 }
 
+/* Legacy alias — light-mode class kept for compatibility */
 body.light-mode {
-  /* Background */
-  --bg-primary: #f4f5f8;
-  --bg-secondary: #ffffff;
-  --bg-surface: #eef1f6;
-  --bg-elevated: #e2e8f0;
-  --bg-overlay: rgba(0, 0, 0, 0.4);
-  
-  /* Text */
-  --text-primary: #1a1a2e;
-  --text-secondary: #4a5568;
-  --text-muted: #718096;
-  
-  /* Accent */
-  --accent: #d21d3f;
-  --accent-hover: #b0102e;
-  --accent-glow: rgba(210, 29, 63, 0.15);
-  --accent-gradient: linear-gradient(135deg, #d21d3f, #a00c25);
-  
-  /* Health Categories — Pastel (Light Mode) */
-  --health-green: #4caf50;
-  --health-green-bg: rgba(76, 175, 80, 0.12);
-  --health-green-border: rgba(76, 175, 80, 0.35);
-  
-  --health-orange: #ef6c00;
-  --health-orange-bg: rgba(239, 108, 0, 0.10);
-  --health-orange-border: rgba(239, 108, 0, 0.30);
-  
-  --health-blue: #1e88e5;
-  --health-blue-bg: rgba(30, 136, 229, 0.10);
-  --health-blue-border: rgba(30, 136, 229, 0.30);
-  
-  --health-pink: #d32f2f;
-  --health-pink-bg: rgba(211, 47, 47, 0.10);
-  --health-pink-border: rgba(211, 47, 47, 0.30);
-  
-  /* Shadows (Softer for Light Mode) */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
-  
-  /* Glass (Darker overlay for light backgrounds) */
-  --glass-bg: rgba(0, 0, 0, 0.03);
-  --glass-border: rgba(0, 0, 0, 0.08);
-  
-  /* Hover */
-  --hover-bg: rgba(0, 0, 0, 0.06);
+  /* same as :root defaults */
 }
 
 *, *::before, *::after {
@@ -132,11 +149,19 @@ body.light-mode {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.25;
 }
 
 ::-webkit-scrollbar {
@@ -202,4 +227,55 @@ body {
 .btn-primary:hover {
   box-shadow: var(--shadow-glow);
   transform: translateY(-2px);
+}
+
+/* Shimmer skeleton loading */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, var(--bg-surface) 0px, var(--bg-elevated) 40px, var(--bg-surface) 80px);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+/* Toast notification for add-to-cart feedback */
+.toast-notification {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-gradient);
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  z-index: 9999;
+  animation: toastIn 0.3s ease, toastOut 0.3s ease 1.7s forwards;
+  pointer-events: none;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; transform: translateX(-50%) translateY(0); }
+  to { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+}
+
+/* Page transition */
+.page-transition {
+  animation: pageIn 0.35s ease-out;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }

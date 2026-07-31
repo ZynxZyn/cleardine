@@ -138,11 +138,52 @@
 }
 
 .lp-desc {
-  font-size: 0.88rem;
+  font-size: 0.9375rem;
   color: var(--text-secondary);
-  line-height: 1.55;
-  margin: 0 0 28px 0;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
   animation: slideUp 0.6s ease 0.5s both;
+}
+
+.lp-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 24px;
+  animation: slideUp 0.6s ease 0.55s both;
+}
+
+.lp-pillar {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  backdrop-filter: var(--glass-blur);
+}
+
+.lp-pillar-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.lp-pillar strong {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.lp-pillar span {
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
 }
 
 /* CTA Button */
@@ -161,6 +202,8 @@
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
   box-shadow: 0 4px 25px var(--accent-glow);
   animation: slideUp 0.6s ease 0.6s both;
+  overflow: hidden;
+  position: relative;
 }
 
 .lp-cta-button:hover {
@@ -179,6 +222,22 @@
 
 .lp-cta-button:hover .lp-cta-arrow {
   transform: translateX(4px);
+}
+
+.lp-cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: ctaShimmer 3s ease-in-out infinite;
+}
+
+@keyframes ctaShimmer {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
 }
 
 .lp-qr-note {
@@ -248,57 +307,60 @@
   gap: 14px;
 }
 
-.lp-modal-option {
+.lp-order-type-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.lp-order-type {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   background: var(--bg-elevated);
-  border: 1px solid var(--glass-border);
+  border: 2px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  padding: 16px;
+  padding: 18px 12px;
   cursor: pointer;
-  transition: border-color var(--transition-fast), transform var(--transition-fast);
+  transition: border-color var(--transition-fast), transform var(--transition-fast), background var(--transition-fast);
+  font-family: inherit;
+  min-height: var(--touch-min);
 }
 
-.lp-modal-option:hover {
+.lp-order-type:hover,
+.lp-order-type.selected {
   border-color: var(--accent);
+  background: var(--accent-glow);
   transform: translateY(-2px);
 }
 
-.lp-modal-option-icon {
-  font-size: 1.8rem;
+.lp-order-type-icon {
+  font-size: 2rem;
 }
 
-.lp-modal-option strong {
-  font-size: 0.95rem;
+.lp-order-type strong {
+  font-size: 1rem;
   color: var(--text-primary);
 }
 
-.lp-modal-option span {
-  font-size: 0.78rem;
+.lp-order-type span:last-child {
+  font-size: 0.8125rem;
   color: var(--text-secondary);
 }
 
-.lp-modal-divider {
-  text-align: center;
+.lp-table-hint {
+  font-size: 0.8125rem;
   color: var(--text-muted);
-  font-size: 0.78rem;
-  position: relative;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
 }
 
-.lp-modal-divider::before,
-.lp-modal-divider::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 40%;
-  height: 1px;
-  background: var(--glass-border);
+.lp-modal-input-row button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
-
-.lp-modal-divider::before { left: 0; }
-.lp-modal-divider::after { right: 0; }
 
 .lp-modal-table-input {
   display: flex;

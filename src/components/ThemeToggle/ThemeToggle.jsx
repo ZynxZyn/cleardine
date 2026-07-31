@@ -1,40 +1,42 @@
 import React, { useState, useEffect } from 'react';
+import Icon from '../Icon/Icon';
 import './ThemeToggle.css';
 
 const ThemeToggle = () => {
-  const [isLightMode, setIsLightMode] = useState(() => {
-    return localStorage.getItem('theme') === 'light';
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return localStorage.getItem('theme') === 'dark';
   });
-  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
-    if (isLightMode) {
-      document.body.classList.add('light-mode');
-      localStorage.setItem('theme', 'light');
-    } else {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
       document.body.classList.remove('light-mode');
       localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
     }
     window.dispatchEvent(new Event('theme-change'));
-  }, [isLightMode]);
+  }, [isDarkMode]);
 
-  const handleToggle = () => {
-    setAnimating(true);
-    setTimeout(() => {
-      setIsLightMode(prev => !prev);
-      setAnimating(false);
-    }, 200);
+  const toggleTheme = () => {
+    setIsDarkMode(prev => !prev);
   };
 
   return (
     <button 
       className="theme-toggle-btn" 
-      onClick={handleToggle}
-      aria-label="Ubah Tema"
-      title={isLightMode ? "Mode Terang — Klik untuk Mode Gelap" : "Mode Gelap — Klik untuk Mode Terang"}
+      onClick={toggleTheme}
+      aria-label="Toggle Mode Gelap/Terang"
+      title={isDarkMode ? 'Mode Terang' : 'Mode Gelap'}
     >
-      <span className={`theme-icon ${animating ? 'spin-out' : 'spin-in'}`}>
-        {isLightMode ? '☀️' : '🌙'}
+      <span className="theme-icon">
+        {isDarkMode ? (
+          <Icon name="moon" size={18} color="#f59e0b" />
+        ) : (
+          <Icon name="sun" size={18} color="#ea580c" />
+        )}
       </span>
     </button>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCart } from '../../context/CartContext';
+import Icon from '../Icon/Icon';
 import './KitchenLoadBar.css';
 
 const KitchenLoadBar = ({ restaurant }) => {
@@ -33,7 +34,9 @@ const KitchenLoadBar = ({ restaurant }) => {
     <div className={`kitchen-load-bar ${status.level}`}>
       <div className="klb-header">
         <div className="klb-title">
-          <span className="klb-icon">🍳</span>
+          <span className="klb-icon">
+            <Icon name="flame" size={16} color="var(--accent)" />
+          </span>
           <span>Kapasitas Produksi Dapur</span>
         </div>
         <div className="klb-count" style={{ color: status.color }}>
@@ -74,7 +77,11 @@ const KitchenLoadBar = ({ restaurant }) => {
       {(status.level === 'high' || status.level === 'full' || status.level === 'overflow') && (
         <div className={`klb-warning-card ${status.level}`}>
           <div className="klb-warning-icon">
-            {status.level === 'overflow' ? '🔥' : status.level === 'full' ? '🚫' : '⚠️'}
+            {status.level === 'high' ? (
+              <Icon name="alertTriangle" size={16} color="var(--health-orange)" />
+            ) : (
+              <Icon name="alertCircle" size={16} color="var(--health-pink)" />
+            )}
           </div>
           <div className="klb-warning-text">
             {status.level === 'high' && 'Mendekati batas slot kompor. Waktu tunggu bisa bertambah.'}

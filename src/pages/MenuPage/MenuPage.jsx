@@ -152,20 +152,36 @@ const MenuPage = () => {
       />
       
       <div className="menu-content-wrap">
-        <KitchenStatus status={restaurant.kitchenStatus} />
-        <KitchenLoadBar restaurant={restaurant} />
+        <div className="menu-sticky-tools">
+          <KitchenStatus status={restaurant.kitchenStatus} />
+          <KitchenLoadBar restaurant={restaurant} />
+          
+          <SearchBar 
+            value={searchQuery} 
+            onChange={setSearchQuery} 
+            placeholder="Cari menu, cth: 'Nasi' atau 'tanpa kacang'" 
+          />
+          
+          <ColorFilter 
+            activeFilter={activeColorFilter} 
+            onFilterChange={setActiveColorFilter} 
+          />
+        </div>
         
-        <SearchBar 
-          value={searchQuery} 
-          onChange={setSearchQuery} 
-          placeholder="Cari menu, cth: 'Nasi' atau 'tanpa kacang'" 
-        />
-        
-        <ColorFilter 
-          activeFilter={activeColorFilter} 
-          onFilterChange={setActiveColorFilter} 
-        />
-        
+        <div className="menu-results-header">
+          <span className="results-count">
+            {filteredMenus.length} menu{filteredMenus.length !== 1 ? '' : ''} ditemukan
+          </span>
+          {(searchQuery || activeColorFilter !== 'all' || activeCategory !== 'Semua') && (
+            <button className="reset-filter-inline" onClick={() => {
+              setSearchQuery('');
+              setActiveColorFilter('all');
+              setActiveCategory('Semua');
+            }}>
+              Reset filter
+            </button>
+          )}
+        </div>
         <div className="category-tabs">
           {categories.map(cat => (
             <button 
@@ -193,7 +209,7 @@ const MenuPage = () => {
           </div>
         ) : (
           <div className="empty-results">
-            <div className="empty-icon">🍽️</div>
+            <div className="empty-icon"></div>
             <h3>Tidak ada menu yang cocok</h3>
             <p>Coba ubah kata kunci atau hapus filter.</p>
             <button className="reset-filter-btn" onClick={() => {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Icon from '../Icon/Icon';
 import './PaymentModal.css';
 
 const PAYMENT_METHODS = [
@@ -6,7 +7,7 @@ const PAYMENT_METHODS = [
     id: 'ovo',
     name: 'OVO',
     type: 'e-wallet',
-    icon: null,
+    icon: <Icon name="cash" size={20} color="#7c3aed" />,
     logoSrc: '/images/logo-ovo.png',
     color: '#7c3aed',
     bgColor: 'rgba(124, 58, 237, 0.12)',
@@ -18,7 +19,7 @@ const PAYMENT_METHODS = [
     id: 'dana',
     name: 'DANA',
     type: 'e-wallet',
-    icon: null,
+    icon: <Icon name="cash" size={20} color="#2563eb" />,
     logoSrc: '/images/logo-dana.png',
     color: '#2563eb',
     bgColor: 'rgba(37, 99, 235, 0.12)',
@@ -30,7 +31,7 @@ const PAYMENT_METHODS = [
     id: 'bank',
     name: 'Transfer Bank',
     type: 'bank',
-    icon: '🏦',
+    icon: <Icon name="bank" size={20} color="#0891b2" />,
     logoSrc: null,
     color: '#0891b2',
     bgColor: 'rgba(8, 145, 178, 0.12)',
@@ -42,7 +43,7 @@ const PAYMENT_METHODS = [
     id: 'cash',
     name: 'Tunai (Cash)',
     type: 'cash',
-    icon: '💵',
+    icon: <Icon name="cash" size={20} color="#16a34a" />,
     logoSrc: null,
     color: '#16a34a',
     bgColor: 'rgba(22, 163, 74, 0.12)',
@@ -76,7 +77,9 @@ const PaymentModal = ({ isOpen, onClose, onConfirm, totalAmount }) => {
 
         <div className="payment-header">
           <h2 className="payment-title">Metode Pembayaran</h2>
-          <button className="payment-close" onClick={onClose}>✕</button>
+          <button className="payment-close" onClick={onClose} aria-label="Tutup">
+            <Icon name="close" size={20} />
+          </button>
         </div>
 
         <div className="payment-amount-row">

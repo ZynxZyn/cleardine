@@ -1,13 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import Icon from '../../components/Icon/Icon';
 import './OrderConfirmPage.css';
 
 const PAYMENT_LABELS = {
-  ovo:  { name: 'OVO',           icon: null, logoSrc: '/images/logo-ovo.png' },
-  dana: { name: 'DANA',          icon: null, logoSrc: '/images/logo-dana.png' },
-  bank: { name: 'Transfer Bank', icon: '🏦', logoSrc: null },
-  cash: { name: 'Tunai (Cash)',  icon: '💵', logoSrc: null },
+  ovo:  { name: 'OVO',           icon: <Icon name="cash" size={18} color="#7c3aed" />, logoSrc: '/images/logo-ovo.png' },
+  dana: { name: 'DANA',          icon: <Icon name="cash" size={18} color="#2563eb" />, logoSrc: '/images/logo-dana.png' },
+  bank: { name: 'Transfer Bank', icon: <Icon name="bank" size={18} color="#0891b2" />, logoSrc: null },
+  cash: { name: 'Tunai (Cash)',  icon: <Icon name="cash" size={18} color="#16a34a" />, logoSrc: null },
 };
 
 const OrderConfirmPage = () => {
@@ -92,14 +93,18 @@ const OrderConfirmPage = () => {
 
         <div className="order-summary-box">
           <div className="os-item">
-            <span className="os-icon">🍽️</span>
+            <span className="os-icon">
+              <Icon name="utensils" size={20} color="var(--accent)" />
+            </span>
             <div className="os-text">
               <span className="os-val">{itemCount} Menu</span>
               <span className="os-lbl">dari {tenantCount} tenant</span>
             </div>
           </div>
           <div className="os-item">
-            <span className="os-icon">⏱️</span>
+            <span className="os-icon">
+              <Icon name="clock" size={20} color="var(--accent)" />
+            </span>
             <div className="os-text">
               <span className="os-val">{snapshotEstTime} Menit</span>
               <span className="os-lbl">estimasi waktu</span>

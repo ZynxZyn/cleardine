@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import AllergenBadge from '../AllergenBadge/AllergenBadge';
 import { useCart } from '../../context/CartContext';
+import { getKitchenQueue } from '../../utils/kitchenStatus';
+import Icon from '../Icon/Icon';
 import './DetailModal.css';
 
 const DetailModal = ({ item, isOpen, onClose, restaurantName, restaurantIcon, kitchenStatus }) => {
@@ -39,6 +41,25 @@ const DetailModal = ({ item, isOpen, onClose, restaurantName, restaurantIcon, ki
     onClose();
   };
 
+  const getKitchenExtra = () => {
+    if (kitchenStatus === 'very-busy') return 18;
+    if (kitchenStatus === 'busy') return 8;
+    return 0;
+  };
+
+  const totalPrepMinutes = item.prepTime + getKitchenExtra();
+  const kitchenQueue = getKitchenQueue(kitchenStatus);
+
+  const getHealthLabel = (category) => {
+    switch(category) {
+      case 'green': return { label: 'Aman & Ramah Lansia', class: 'green' };
+      case 'orange': return { label: 'Perlu Perhatian Medis', class: 'orange' };
+      case 'blue': return { label: 'Opsi Diet Khusus', class: 'blue' };
+      case 'pink': return { label: 'Peringatan Alergen', class: 'pink' };
+      default: return null;
+    }
+  };
+
   const getHealthExplanation = (category) => {
     switch(category) {
       case 'green': return 'Menu ini aman, rendah kalori, mudah dicerna, dan bebas alergen — cocok untuk semua kalangan termasuk lansia.';
@@ -49,10 +70,14 @@ const DetailModal = ({ item, isOpen, onClose, restaurantName, restaurantIcon, ki
     }
   };
 
+  const healthInfo = getHealthLabel(item.healthCategory);
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>✕</button>
+        <button className="modal-close" onClick={onClose} aria-label="Tutup">
+          <Icon name="close" size={20} />
+        </button>
         
         <div className="modal-image-container">
           {!imageError && item.image ? (
@@ -64,7 +89,7 @@ const DetailModal = ({ item, isOpen, onClose, restaurantName, restaurantIcon, ki
             />
           ) : (
             <div className="modal-image-fallback">
-              <span>Belum Ada Gambar</span>
+              <Icon name="utensils" size={40} color="var(--text-muted)" />
             </div>
           )}
         </div>
@@ -81,28 +106,67 @@ const DetailModal = ({ item, isOpen, onClose, restaurantName, restaurantIcon, ki
           
           {item.description && <p className="modal-description">{item.description}</p>}
 
-          <div className="modal-section-grid">
-            <div className="modal-info-box">
-              <span className="info-box-label">PORSI</span>
-              <div className="info-box-value">
-                {item.weight} • {item.servingSize} {item.pieces && `(${item.pieces})`}
+          {healthInfo && (
+            <div className={`modal-health-badge health-badge-${healthInfo.class}`}>
+              <span className="health-swatch-icon" aria-hidden="true"></span>
+              {healthInfo.label}
+            </div>
+          )}
+
+          <div className="modal-transparency-block">
+            <h3 className="transparency-title">Transparansi Porsi</h3>
+            <div className="transparency-portion">
+              <div className="portion-stat">
+                <span className="portion-value">{item.weight}</span>
+                <span className="portion-label">Berat bersih</span>
               </div>
+              <div className="portion-divider"></div>
+              <div className="portion-stat">
+                <span className="portion-value">{item.servingSize}</span>
+                <span className="portion-label">Porsi</span>
+              </div>
+              {item.pieces && (
+                <>
+                  <div className="portion-divider"></div>
+                  <div className="portion-stat">
+                    <span className="portion-value">{item.pieces}</span>
+                    <span className="portion-label">Potong</span>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+
+          <div className={`modal-time-block ${kitchenQueue.className}`}>
+            <div className="time-block-header">
+              <div className="time-block-title">
+                <Icon name="clock" size={16} color="var(--accent)" />
+                <span>Estimasi Penyajian</span>
+              </div>
+              <span className={`time-status-pill ${kitchenQueue.className}`}>
+                <span className="speed-dot-indicator"></span>
+                {kitchenQueue.statusLabel} ({kitchenQueue.timeLabel})
+              </span>
             </div>
             
-            <div className="modal-info-box">
-              <span className="info-box-label">WAKTU</span>
-              <div className="info-box-value">
-                {item.prepSpeed === 'fast' ? '⚡' : '🕐'} {item.prepTime}m {
-                  kitchenStatus === 'very-busy' ? '(+15-20m)' : kitchenStatus === 'busy' ? '(+5-10m)' : '(±0m)'
-                }
+            <div className="time-block-body">
+              <div className="time-big-display">
+                <span className="time-big-num">~{totalPrepMinutes}</span>
+                <span className="time-big-unit">menit</span>
+              </div>
+              <div className="time-breakdown">
+                <p className="time-breakdown-main">
+                  Waktu masak: <strong>{item.prepTime} menit</strong> {kitchenStatus !== 'normal' ? `+ Antrean (${kitchenQueue.timeLabel})` : '(Dapur lancar)'}
+                </p>
+                <p className="time-breakdown-sub">{kitchenQueue.desc}</p>
               </div>
             </div>
-            
-            <div className="modal-info-box">
-              <span className="info-box-label">NUTRISI</span>
-              <div className="info-box-value">
-                🔥 {item.calories} kkal
-              </div>
+          </div>
+
+          <div className="modal-info-row">
+            <div className="modal-info-box compact">
+              <span className="info-box-label">KALORI</span>
+              <div className="info-box-value">{item.calories} kkal</div>
             </div>
           </div>
 

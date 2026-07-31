@@ -1,5 +1,5 @@
 .tenant-card {
-  background: var(--bg-surface);
+  background: var(--bg-secondary);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: var(--space-md);
@@ -9,36 +9,24 @@
   cursor: pointer;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
   position: relative;
-  overflow: hidden;
-}
-
-.tenant-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: var(--radius-lg);
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  box-shadow: var(--shadow-sm);
 }
 
 .tenant-card:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
+}
+
+.tenant-card:active {
+  transform: translateY(0);
 }
 
 .tenant-icon-container {
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   border-radius: var(--radius-md);
-  background: var(--bg-elevated);
+  background: var(--bg-surface);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,92 +36,175 @@
 
 .tenant-info {
   flex: 1;
+  min-width: 0;
 }
 
 .tenant-name {
   margin: 0 0 4px 0;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.125rem;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
 .tenant-cuisine {
-  margin: 0 0 8px 0;
-  font-size: 0.85rem;
+  margin: 0 0 10px 0;
+  font-size: 0.875rem;
   color: var(--text-secondary);
+  line-height: 1.35;
 }
 
 .tenant-meta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 6px;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .tenant-menu-count {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
-  background: var(--glass-bg);
-  padding: 3px 9px;
+  background: var(--bg-surface);
+  padding: 3px 8px;
   border-radius: var(--radius-full);
   border: 1px solid var(--glass-border);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
-/* Speed Pill Badge replacing plain dot */
+/* Minimalist 1-Line Speed Pill */
 .tenant-speed-pill {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.85rem;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.725rem;
   font-weight: 600;
-  color: var(--text-primary);
-  backdrop-filter: blur(8px);
-  transition: background var(--transition-fast);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+  height: 22px;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
-.tenant-speed-pill .speed-icon {
-  font-size: 0.95rem;
+.speed-dot-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: currentColor;
+  box-shadow: 0 0 5px currentColor;
+}
+
+.speed-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
   line-height: 1;
+  white-space: nowrap;
 }
 
+.speed-status {
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+
+.speed-sep {
+  opacity: 0.5;
+  font-weight: 400;
+  font-size: 0.7rem;
+}
+
+.speed-time {
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+
+/* Status colors */
 .tenant-speed-pill.normal {
-  background: rgba(46, 204, 113, 0.12);
-  border-color: rgba(46, 204, 113, 0.25);
-  color: #2ecc71;
+  background: var(--health-green-bg);
+  border-color: var(--health-green-border);
+  color: var(--health-green);
 }
 
 .tenant-speed-pill.busy {
-  background: rgba(243, 156, 18, 0.12);
-  border-color: rgba(243, 156, 18, 0.25);
-  color: #f39c12;
+  background: var(--health-orange-bg);
+  border-color: var(--health-orange-border);
+  color: var(--health-orange);
 }
 
 .tenant-speed-pill.very-busy {
-  background: rgba(231, 76, 60, 0.15);
-  border-color: rgba(231, 76, 60, 0.3);
-  color: #e74c3c;
+  background: var(--health-pink-bg);
+  border-color: var(--health-pink-border);
+  color: var(--health-pink);
 }
 
-/* Light Mode Overrides */
-body.light-mode .tenant-card:hover {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+/* Mobile Responsiveness — Keep Everything strictly in 1 row */
+@media (max-width: 600px) {
+  .tenant-card {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .tenant-icon-container {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+
+  .tenant-name {
+    font-size: 1rem;
+    margin-bottom: 2px;
+  }
+
+  .tenant-cuisine {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+
+  .tenant-meta {
+    gap: 5px;
+    flex-wrap: nowrap;
+  }
+
+  .tenant-menu-count {
+    padding: 2px 7px;
+    font-size: 0.68rem;
+    height: 20px;
+  }
+
+  .tenant-speed-pill {
+    padding: 2px 7px;
+    font-size: 0.68rem;
+    height: 20px;
+    gap: 4px;
+  }
+
+  .speed-dot-indicator {
+    width: 5px;
+    height: 5px;
+  }
+
+  .speed-status, .speed-sep, .speed-time {
+    font-size: 0.65rem;
+  }
 }
 
-body.light-mode .tenant-speed-pill.normal {
-  background: rgba(46, 204, 113, 0.15);
-  color: #1e8449;
+.tenant-chevron {
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  line-height: 1;
+  transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
-body.light-mode .tenant-speed-pill.busy {
-  background: rgba(243, 156, 18, 0.18);
-  color: #d68910;
-}
-
-body.light-mode .tenant-speed-pill.very-busy {
-  background: rgba(231, 76, 60, 0.18);
-  color: #c0392b;
+.tenant-card:hover .tenant-chevron {
+  color: var(--accent);
+  transform: translateX(2px);
 }

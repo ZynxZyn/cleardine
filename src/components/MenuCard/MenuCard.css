@@ -192,3 +192,13 @@ body.light-mode .qty-btn:hover {
 body.light-mode .menu-card:hover {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
+
+.menu-add-btn:active {
+  animation: addPop 0.3s ease;
+}
+
+@keyframes addPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
