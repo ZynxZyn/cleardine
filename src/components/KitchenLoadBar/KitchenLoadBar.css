@@ -30,20 +30,22 @@
 .klb-title {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-secondary);
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .klb-icon {
   font-size: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .klb-count {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  font-family: 'Inter', monospace;
+  font-family: var(--font-body);
   transition: color var(--transition-normal);
 }
 
@@ -117,9 +119,9 @@
 }
 
 .klb-status-label {
-  font-size: 0.75rem;
+  font-size: 0.825rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 /* Warning card */
