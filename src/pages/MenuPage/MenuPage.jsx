@@ -152,12 +152,7 @@ const MenuPage = () => {
       />
       
       <div className="menu-content-wrap">
-        <div className="menu-top-info">
-          <KitchenStatus status={restaurant.kitchenStatus} />
-          <KitchenLoadBar restaurant={restaurant} />
-        </div>
-        
-        {/* Sticky Search Bar Saja */}
+        {/* Sticky Search Bar */}
         <div className="menu-search-sticky">
           <SearchBar 
             value={searchQuery} 
@@ -183,6 +178,12 @@ const MenuPage = () => {
               </button>
             ))}
           </div>
+        </div>
+
+        {/* Informasi Dapur Alert Card */}
+        <div className="menu-top-info">
+          <KitchenStatus status={restaurant.kitchenStatus} />
+          <KitchenLoadBar restaurant={restaurant} />
         </div>
         
         <div className="menu-results-header">
