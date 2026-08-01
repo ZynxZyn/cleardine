@@ -51,6 +51,7 @@ const NutritionPanel = ({ cart }) => {
   );
 
   const caloriePct = Math.round((totals.calories / DAILY_REFERENCE.calories) * 100);
+  const ringColor = caloriePct > 100 ? '#ef4444' : caloriePct > 80 ? '#f59e0b' : caloriePct > 50 ? '#10b981' : '#3b82f6';
 
   return (
     <div className={`nutrition-panel ${expanded ? 'nutrition-panel--open' : ''}`}>
@@ -89,7 +90,7 @@ const NutritionPanel = ({ cart }) => {
             <div className="nutrition-total">
               {/* Calorie ring summary */}
               <div className="calorie-summary">
-                <div className="calorie-ring" style={{ '--pct': `${Math.min(caloriePct, 100)}` }}>
+                <div className="calorie-ring" style={{ '--pct': `${Math.min(caloriePct, 100)}`, '--ring-color': ringColor }}>
                   <div className="calorie-ring-inner">
                     <span className="calorie-num">{Math.round(totals.calories)}</span>
                     <span className="calorie-unit">kkal</span>
