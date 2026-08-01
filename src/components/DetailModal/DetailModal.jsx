@@ -184,7 +184,7 @@ const DetailModal = ({ item, isOpen, onClose, restaurantName, restaurantIcon, ki
             {item.allergens && item.allergens.length > 0 ? (
               <AllergenBadge allergens={item.allergens} compact={false} />
             ) : (
-              <div className="no-allergen-msg">✅ Tidak mengandung alergen umum</div>
+              <div className="no-allergen-msg">Tidak mengandung alergen umum</div>
             )}
           </div>
           
