@@ -104,7 +104,7 @@ const NutritionPanel = ({ cart }) => {
                     Referensi: {DAILY_REFERENCE.calories} kkal/hari
                   </p>
                   <div className={`calorie-badge ${caloriePct > 80 ? 'high' : caloriePct > 50 ? 'medium' : 'low'}`}>
-                    {caloriePct > 80 ? '⚠️ Tinggi kalori' : caloriePct > 50 ? '✅ Cukup' : '💚 Rendah kalori'}
+                    {caloriePct > 80 ? 'Tinggi kalori' : caloriePct > 50 ? 'Cukup' : 'Rendah kalori'}
                   </div>
                 </div>
               </div>
