@@ -186,6 +186,12 @@ const iconPaths = {
       <rect x="8" y="2" width="8" height="4" rx="1" strokeLinecap="round" strokeLinejoin="round"/>
     </>
   ),
+  nutrition: (
+    <>
+      <path d="M12 2a7 7 0 00-7 7c0 3.5 2 6.5 5 8v3h4v-3c3-1.5 5-4.5 5-8a7 7 0 00-7-7z" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9 12h6M9 15h4" strokeLinecap="round"/>
+    </>
+  ),
 };
 
 const Icon = ({ name, size = 20, color = 'currentColor', strokeWidth = 2, className = '', style = {} }) => {

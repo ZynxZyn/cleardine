@@ -148,18 +148,16 @@ const MenuPage = () => {
         title={`${restaurant.icon} ${restaurant.name}`} 
         subtitle={restaurant.cuisine}
         showBack 
-        backTo={backUrl} 
-      />
+        backTo={backUrl}
+      >
+        <SearchBar 
+          value={searchQuery} 
+          onChange={setSearchQuery} 
+          placeholder="Cari menu, cth: 'Nasi' atau 'tanpa kacang'" 
+        />
+      </Header>
       
       <div className="menu-content-wrap">
-        {/* Sticky Search Bar */}
-        <div className="menu-search-sticky">
-          <SearchBar 
-            value={searchQuery} 
-            onChange={setSearchQuery} 
-            placeholder="Cari menu, cth: 'Nasi' atau 'tanpa kacang'" 
-          />
-        </div>
         
         <div className="menu-flow-filters">
           <ColorFilter 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useCart } from '../../context/CartContext';
 import AllergenBadge from '../AllergenBadge/AllergenBadge';
 import PaymentModal from '../PaymentModal/PaymentModal';
+import NutritionPanel from '../NutritionPanel/NutritionPanel';
 import Icon from '../Icon/Icon';
 import { getKitchenQueue } from '../../utils/kitchenStatus';
 import './CartDrawer.css';
@@ -96,6 +97,8 @@ const CartDrawer = ({ isOpen, onClose, onCheckout }) => {
                     </div>
                   </div>
                 ))}
+                
+                <NutritionPanel cart={cart} />
 
                 <div className="cart-summary">
                   <div className="summary-row">
