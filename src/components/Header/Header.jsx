@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
+import Icon from '../Icon/Icon';
 import './Header.css';
 
 const Header = ({ title, subtitle, showBack, backTo }) => {
@@ -17,11 +18,8 @@ const Header = ({ title, subtitle, showBack, backTo }) => {
   return (
     <header className="header">
       {showBack && (
-        <button className="back-button" onClick={handleBack} aria-label="Go back">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
+        <button className="back-button" onClick={handleBack} aria-label="Kembali">
+          <Icon name="back" size={18} />
         </button>
       )}
       <div className="header-content">

@@ -24,20 +24,25 @@
   position: relative;
   top: auto;
   left: auto;
-  padding: 6px 10px;
-  border-radius: var(--radius-full);
-  font-size: 0.72rem;
-  font-weight: 600;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
   background: var(--bg-secondary);
   border: 1px solid var(--glass-border);
   color: var(--text-primary);
   flex-shrink: 0;
-  white-space: nowrap;
-  width: 80px;
-  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.guide-page .back-to-landing-btn:hover {
+  transform: scale(1.05);
+  background: var(--bg-surface);
 }
 
 .guide-page .home-theme-toggle-wrap {
@@ -45,7 +50,7 @@
   top: auto;
   right: auto;
   flex-shrink: 0;
-  width: 80px;
+  width: 36px;
   display: flex;
   justify-content: flex-end;
 }

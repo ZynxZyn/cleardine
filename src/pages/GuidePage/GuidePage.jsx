@@ -62,8 +62,8 @@ const GuidePage = () => {
   return (
     <div className="guide-page">
       <header className="top-navbar">
-        <button className="back-to-landing-btn" onClick={() => navigate('/')} title="Kembali ke Beranda">
-          <Icon name="back" size={14} /> Beranda
+        <button className="back-to-landing-btn" onClick={() => navigate('/')}>
+          <Icon name="back" size={16} />
         </button>
 
         <div className="flow-stepper">

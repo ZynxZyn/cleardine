@@ -68,8 +68,8 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <header className="top-navbar">
-        <button className="back-to-landing-btn" onClick={() => navigate(`/guide?table=${encodeURIComponent(tableNo)}`)} title="Kembali ke Panduan">
-          <Icon name="back" size={14} /> Panduan
+        <button className="back-to-landing-btn" onClick={() => navigate(`/guide?table=${encodeURIComponent(tableNo)}`)} >
+          <Icon name="back" size={16} />
         </button>
 
         <div className="flow-stepper">
