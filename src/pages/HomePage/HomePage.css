@@ -9,8 +9,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding: 10px 14px;
+  gap: 6px;
+  padding: 10px 12px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -23,18 +23,20 @@
   position: relative;
   top: auto;
   left: auto;
-  padding: 6px 12px;
+  padding: 6px 10px;
   border-radius: var(--radius-full);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   background: var(--bg-secondary);
   border: 1px solid var(--glass-border);
   color: var(--text-primary);
   flex-shrink: 0;
   white-space: nowrap;
+  width: 80px;
+  justify-content: center;
 }
 
 .top-navbar .home-theme-toggle-wrap {
@@ -42,16 +44,19 @@
   top: auto;
   right: auto;
   flex-shrink: 0;
+  width: 80px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .flow-stepper {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 0;
   padding: 0;
   flex: 1;
-  max-width: 260px;
+  min-width: 0;
 }
 
 .flow-step {
@@ -63,8 +68,8 @@
   font-weight: 600;
   color: var(--text-muted);
   text-align: center;
-  min-width: 0;
-  flex: 1;
+  min-width: 40px;
+  flex-shrink: 0;
 }
 
 .flow-step .step-circle {
@@ -92,7 +97,7 @@
 }
 
 .flow-line {
-  width: 10px;
+  width: 16px;
   height: 2px;
   background: var(--glass-border);
   margin-bottom: 12px;
